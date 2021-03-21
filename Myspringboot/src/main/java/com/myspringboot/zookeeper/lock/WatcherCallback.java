@@ -32,7 +32,6 @@ public class WatcherCallback implements Watcher, AsyncCallback.StatCallback, Asy
     @Override
     public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
         if (data != null) {
-
             countDownLatch.countDown();
         }
     }
@@ -56,7 +55,6 @@ public class WatcherCallback implements Watcher, AsyncCallback.StatCallback, Asy
                 zooKeeper.getChildren("/", false, this, "asd");
                 break;
             case NodeDataChanged:
-
                 break;
             case NodeChildrenChanged:
                 break;
@@ -67,17 +65,6 @@ public class WatcherCallback implements Watcher, AsyncCallback.StatCallback, Asy
             case PersistentWatchRemoved:
                 break;
         }
-
-    }
-
-    public void await() {
-        zooKeeper.exists("/asd", this, this, "zxc");
-        try {
-            countDownLatch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
     }
 
     public void tryLock() {
@@ -88,7 +75,6 @@ public class WatcherCallback implements Watcher, AsyncCallback.StatCallback, Asy
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
     public void unLock() {

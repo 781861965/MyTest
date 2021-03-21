@@ -36,8 +36,9 @@ public class MyClassLoader extends ClassLoader {
 
     public static void main(String[] args) throws Exception {
         MyClassLoader myClassLoader = new MyClassLoader("C:\\Users\\Administrator\\Desktop\\User.class");
-        Class clazz = myClassLoader.loadClass("com.myspringboot.jvm.loader.User");
-        Class clazz1 = myClassLoader.loadClass("com.myspringboot.jvm.loader.User");
+        Class clazz = myClassLoader.findClass("com.myspringboot.jvm.loader.User");
+        MyClassLoader myClassLoader1 = new MyClassLoader("C:\\Users\\Administrator\\Desktop\\User.class");
+        Class clazz1 = myClassLoader1.findClass("com.myspringboot.jvm.loader.User");
 
         System.out.println(clazz == clazz1);
 
@@ -49,4 +50,5 @@ public class MyClassLoader extends ClassLoader {
         System.out.println(clazz.newInstance().getClass().getClassLoader());
         //    System.out.println(user.getClass().getClassLoader());
     }
+
 }

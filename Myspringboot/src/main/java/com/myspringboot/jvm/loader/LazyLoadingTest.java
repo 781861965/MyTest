@@ -1,27 +1,16 @@
 package com.myspringboot.jvm.loader;
 
-public class LazyLoadingTest { //严格讲应该叫lazy initialzing，因为java虚拟机规范并没有严格规定什么时候必须loading,但严格规定了什么时候initialzing
+/**
+ * 类加载过程的测试
+ */
+public class LazyLoadingTest {
     public static void main(String[] args) throws Exception {
-        P p;
-        //     P  p =null;
-//        X x = new X();
-//        System.out.println(P.i);
-//        System.out.println(P.j);
- //       Class.forName("com.mashibing.jvm.c2_classloader.T008_LazyLoading$P");
-
-    }
-
-    public static class P {
-        final static int i = 8;
-        static int j = 9;
-        static {
-            System.out.println("P");
-        }
-    }
-
-    public static class X extends P {
-        static {
-            System.out.println("X");
-        }
+        //    ATest a; //不会打印（没有加载完成）
+        //    ATest a =null;//不会打印（没有加载完成）
+        //    System.out.println(ATest.I);//打印出5（没有执行静态块，未加载完成）
+        //    System.out.println(ATest.j);//打印出ATest，j = 11，11（静态变量赋初始值，已加载完成）
+        //    Class.forName("com.myspringboot.jvm.loader.ATest");//打印出ATest，j = 11（执行静态块，已加载完成）
+        //    Class.forName("com.myspringboot.jvm.loader.BTest");//打印出ATest，j = 11，BTest（执行静态块，已加载完成）
+        //    BTest x = new BTest();//打印出ATest，j = 11，BTest（实例化父子类，已加载完成）
     }
 }

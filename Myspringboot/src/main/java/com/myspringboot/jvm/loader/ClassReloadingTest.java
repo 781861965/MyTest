@@ -12,13 +12,8 @@ public class ClassReloadingTest extends ClassLoader {
     }
 
     @Override
-    public Class<?> loadClass(String name) throws ClassNotFoundException {
-
-        File f = new File(pathName);
-
-        if (!f.exists()) return super.loadClass(name);
-
-        try (FileInputStream fis = new FileInputStream(f);
+    public Class<?> findClass(String name) throws ClassNotFoundException {
+        try (FileInputStream fis = new FileInputStream(new File(pathName));
              ByteArrayOutputStream baos = new ByteArrayOutputStream();) {
             byte[] buffer = new byte[1024];
             int size = 0;
@@ -38,11 +33,11 @@ public class ClassReloadingTest extends ClassLoader {
 
 
     public static void main(String[] args) throws Exception {
-        ClassReloadingTest m = new ClassReloadingTest("C:\\Users\\Administrator\\Desktop\\Users.class");
-        Class clazz = m.loadClass("com.myspringboot.jvm.loader.Users");
+        ClassReloadingTest m = new ClassReloadingTest("C:\\Users\\Administrator\\Desktop\\User.class");
+        Class clazz = m.findClass("com.myspringboot.jvm.loader.User");
 
-        m = new ClassReloadingTest("C:\\Users\\Administrator\\Desktop\\Users.class");
-        Class clazzNew = m.loadClass("com.myspringboot.jvm.loader.Users");
+        m = new ClassReloadingTest("C:\\Users\\Administrator\\Desktop\\User.class");
+        Class clazzNew = m.findClass("com.myspringboot.jvm.loader.User");
 
         System.out.println(clazz == clazzNew);
     }
