@@ -1,6 +1,7 @@
 package suanfa.paixu;
 
 import static suanfa.paixu.DuiShuQi.*;
+import static suanfa.paixu.OutArrTest.*;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -12,6 +13,9 @@ public class MainTest {
             int[] arr1 = copyArr(arr);
             int[] arr2 = copyArr(arr);
             ChaRuTest.sort(arr);
+            if (i == 0) {
+                out(arr);
+            }
             if (!isSortArr(arr)) {
                 System.out.println("ChaRuTest.sort cuo le");
             }

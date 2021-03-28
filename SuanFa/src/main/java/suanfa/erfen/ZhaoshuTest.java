@@ -5,6 +5,7 @@ public class ZhaoshuTest {
     public static void main(String[] args) {
         int[] ints = {1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 7, 8, 8, 9, 10};
 
+        System.out.println(find(ints, 6));
         System.out.println(findZuiZuo(ints, 6));
         System.out.println(findZuiZuo(ints, 2));
         System.out.println(findZuiZuo(ints, 8));
@@ -22,8 +23,8 @@ public class ZhaoshuTest {
         }
         int l = 0;
         int r = arr.length - 1;
-        int m = r / 2;
-        while (l < m || m < r) {
+        while (l <= r) {
+            int m = l + ((r - l) >> 1);
             if (num == arr[m]) {
                 return true;
             } else if (num < arr[m]) {
@@ -31,7 +32,6 @@ public class ZhaoshuTest {
             } else {
                 l = m + 1;
             }
-            m = (l + r) / 2;
         }
         return false;
     }
@@ -43,16 +43,14 @@ public class ZhaoshuTest {
         }
         int l = 0;
         int r = arr.length - 1;
-        int m = r / 2;
-
-        while (l < m || m < r) {
+        while (l <= r) {
+            int m = l + ((r - l) >> 1);
             if (arr[m] >= num) {
                 index = m;
                 r = m - 1;
             } else {
                 l = m + 1;
             }
-            m = (l + r) / 2;
         }
         return index;
     }
@@ -73,9 +71,8 @@ public class ZhaoshuTest {
         }
         int l = 0;
         int r = arr.length - 1;
-        int m = r / 2;
-
-        while (l < m || m < r) {
+        while (l <= r) {
+            int m = l + ((r - l) >> 1);
             if (arr[m] < arr[m - 1] && arr[m] < arr[m + 1]) {
                 return m;
             } else if (arr[m] > arr[m - 1]) {
@@ -83,7 +80,6 @@ public class ZhaoshuTest {
             } else {
                 l = m;
             }
-            m = (l + r) / 2;
         }
         return index;
     }

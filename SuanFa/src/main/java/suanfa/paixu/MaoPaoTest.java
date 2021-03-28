@@ -2,7 +2,6 @@ package suanfa.paixu;
 
 public class MaoPaoTest {
     public static void main(String[] args) {
-
         int[] arr = {6, 5, 6, 4, 6, 5, 4, 1, 1, 9, 8, 7};
         out(arr);
         System.out.println();
@@ -14,7 +13,6 @@ public class MaoPaoTest {
         if (arr == null || arr.length < 2) {
             return;
         }
-
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length-i-1; j++) {
                 if (arr[j] > arr[j+1]) {
@@ -23,10 +21,7 @@ public class MaoPaoTest {
                     arr[j] = num;
                 }
             }
-
-
         }
-
     }
 
     private static void out(int[] arr) {

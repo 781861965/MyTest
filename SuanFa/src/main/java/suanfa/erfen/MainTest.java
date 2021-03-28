@@ -19,7 +19,6 @@ public class MainTest {
                 out(arr);
                 break;
             }
-
         }
     }
 }

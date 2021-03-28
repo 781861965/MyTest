@@ -13,7 +13,6 @@ public class ChaRuTest {
         if (arr == null || arr.length < 2) {
             return;
         }
-
         for (int i = 1; i < arr.length; i++) {
             for (int j = i; j > 0 && arr[j] < arr[j-1]; j--) {
                     int num = arr[j-1];

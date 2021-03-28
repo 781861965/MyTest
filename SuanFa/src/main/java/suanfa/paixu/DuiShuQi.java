@@ -5,7 +5,7 @@ public class DuiShuQi {
         int l = (int) (Math.random() * maxL);
         int[] arr = new int[l];
         for (int i = 0; i < l; i++) {
-            arr[i] = (int) (Math.random() * maxV);
+            arr[i] = (int) ((Math.random() - Math.random()) * maxV);
         }
         return arr;
     }

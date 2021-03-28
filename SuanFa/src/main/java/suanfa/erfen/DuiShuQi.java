@@ -5,11 +5,11 @@ public class DuiShuQi {
         int l = (int) (Math.random() * maxL);
         int[] arr = new int[l];
         if (l > 0) {
-            arr[0] = (int) (Math.random() * maxV);
+            arr[0] = (int) ((Math.random() - Math.random()) * maxV);
         }
         for (int i = 1; i < l; i++) {
             do {
-                arr[i] = (int) (Math.random() * maxV);
+                arr[i] = (int) ((Math.random() - Math.random()) * maxV);
             } while (arr[i] == arr[i - 1]);
         }
         return arr;
